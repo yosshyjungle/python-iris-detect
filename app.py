@@ -7,11 +7,12 @@ app = Flask(__name__)
 
 # モデルの読み込み部分を修正
 try:
-    model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "iris.pkl")
+    model_path = "iris.pkl"  # パスを相対パスに変更
     with open(model_path, "rb") as f:
         model = pickle.load(f)
 except Exception as e:
     print(f"モデルの読み込みエラー: {e}")
+    model = None
 
 
 @app.route("/")
