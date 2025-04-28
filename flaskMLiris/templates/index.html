@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Iris Detection App</title>
+</head>
+<body bgcolor="#d4a3ae">
+<div style="width:800px; text-align:center; margin:0 auto">
+<h1> IRIS FLOWER DETECTION </h1><br>
+<!-- どちらでもよい -->
+<!--<form method="POST" action="/predict">-->
+<form method="POST" action="{{ url_for('detect') }}">
+   ・Sepal length(がく片の長さ)  :  <input type="text" name='sl' placeholder="enter1">
+       <br><br>
+    ・Sepal width(がく片の幅) 　 :  <input type="text" name='sw' placeholder="enter2">
+       <br><br>
+    ・Petal length(花びらの長さ) :  <input type="text" name='pl' placeholder="enter3">
+       <br><br>
+    ・Petal width(花びらの幅) 　 : <input type="text" name='pw' placeholder="enter4">
+       <br><br><br>
+    <input type="submit" value='predict!'>
+</form>
+    <div style="margin-bottom:30px"></div>
+    <img src='static/flower1.jpg' alt="flower" width="400">
+<footer><small>2021 Copyright © Tomoyuki Yoshikawa All Right Reserved.</small></footer>
+</div>
+</body>
+</html>
+
+
