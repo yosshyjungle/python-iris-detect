@@ -28,4 +28,8 @@ def home():
         return str(error), 400
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     app.run()
+=======
+    app.run()
+>>>>>>> f95400f1170e70b4e1e5e174b510d5f1d7cac1ca
