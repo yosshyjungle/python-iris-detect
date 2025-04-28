@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
-
-model = pickle.load(open('iris.pkl', 'rb'))
+import os
 
 app = Flask(__name__)
+
+# モデルのパスを修正
+model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'iris.pkl')
+model = pickle.load(open(model_path, 'rb'))
 
 @app.route('/')
 def main():
@@ -13,15 +16,16 @@ def main():
 @app.route('/predict', methods=['POST'])
 def home():
     try:
-        data1 = request.form['sl']
-        data2 = request.form['sw']
-        data3 = request.form['pl']
-        data4 = request.form['pw']
+        data1 = float(request.form['sl'])
+        data2 = float(request.form['sw'])
+        data3 = float(request.form['pl'])
+        data4 = float(request.form['pw'])
         arr = np.array([[data1, data2, data3, data4]])
         pred = model.predict(arr)
         return render_template('after.html', data=pred)
     except Exception as error:
         print(error)
+        return str(error), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 3000)))
+    app.run()
